@@ -29,7 +29,7 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
     backdrop-filter: blur(10px);
     z-index: 1000;
 }
@@ -53,7 +53,6 @@ header {
     color: white;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.9rem;
 }
 
 .nav-links a:hover { color: var(--red); }
@@ -78,6 +77,23 @@ header {
     margin-bottom: 30px;
 }
 
+/* TRUST BADGES */
+.trust {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.trust div {
+    background: var(--surface);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+/* BUTTON */
 .btn {
     background: var(--red);
     padding: 14px 30px;
@@ -90,7 +106,7 @@ header {
 
 .btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(227,30,36,0.5);
+    box-shadow: 0 0 20px rgba(227,30,36,0.6);
 }
 
 /* FORM */
@@ -105,7 +121,7 @@ header {
     padding: 30px;
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+    box-shadow: 0 0 50px rgba(0,0,0,0.4);
 }
 
 .form-group { margin-bottom: 18px; }
@@ -140,6 +156,20 @@ textarea { min-height: 120px; }
     gap: 15px;
 }
 
+/* CTA BELOW FORM */
+.cta-box {
+    margin-top: 30px;
+    text-align: center;
+    background: rgba(227,30,36,0.08);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.cta-box strong {
+    color: var(--red);
+}
+
+/* SUBMIT */
 .submit-btn {
     width: 100%;
     padding: 16px;
@@ -163,7 +193,7 @@ textarea { min-height: 120px; }
     color: var(--gray);
 }
 
-/* FLOATING BUTTON */
+/* FLOAT */
 .floating-whatsapp {
     position: fixed;
     bottom: 20px;
@@ -187,27 +217,30 @@ textarea { min-height: 120px; }
 <body>
 
 <header>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="e57fb09b-db12-4a2b-b3ca-77a7db54df98.png">
-        </div>
-
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="order.html" style="color:#E31E24;">Book</a></li>
-        </ul>
-    </nav>
+<nav class="navbar">
+<img src="e57fb09b-db12-4a2b-b3ca-77a7db54df98.png">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="order.html" style="color:#E31E24;">Book</a></li>
+</ul>
+</nav>
 </header>
 
-<main>
-
 <section class="order-hero">
-    <h1>Book Your Service</h1>
-    <p>Fast, professional auto electrical diagnostics and repair. Send your request directly via WhatsApp.</p>
-    <a href="https://wa.me/263787747619" class="btn">Message on WhatsApp</a>
+<h1>Book Your Service</h1>
+<p>Fast, professional auto electrical diagnostics and repair.</p>
+
+<div class="trust">
+<div>⚡ Fast Response</div>
+<div>✔ Certified Work</div>
+<div>🚛 Fleet Specialists</div>
+</div>
+
+<br>
+<a href="https://wa.me/263787747619" class="btn">Message on WhatsApp</a>
 </section>
 
 <section class="order-section">
@@ -267,6 +300,12 @@ textarea { min-height: 120px; }
 <button type="submit" class="submit-btn">Send to WhatsApp</button>
 
 </form>
+
+<div class="cta-box">
+<p><strong>⚡ Same-day response available.</strong><br>
+We usually reply within minutes on WhatsApp.</p>
+</div>
+
 </div>
 
 </section>
@@ -276,8 +315,6 @@ textarea { min-height: 120px; }
 </footer>
 
 <a class="floating-whatsapp" href="https://wa.me/263787747619">💬 WhatsApp</a>
-
-</main>
 
 <script>
 document.getElementById('whatsappForm').addEventListener('submit', function(e) {
@@ -291,13 +328,15 @@ document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     const service = document.getElementById('service').value;
     const fault = document.getElementById('fault').value || "No description";
 
-    const msg = `*SERVICE BOOKING*%0A
-Name: ${name}%0A
-Email: ${email}%0A
-Location: ${loc}%0A
-Vehicle: ${vType} (${brand})%0A
-Service: ${service}%0A
-Problem: ${fault}`;
+    const msg = `*🚗 JR ELECTRADRIVE BOOKING*%0A
+----------------------%0A
+*Name:* ${name}%0A
+*Email:* ${email}%0A
+*Location:* ${loc}%0A
+*Vehicle:* ${vType} (${brand})%0A
+*Service:* ${service}%0A
+*Problem:* ${fault}%0A
+----------------------`;
 
     window.open(`https://wa.me/263787747619?text=${msg}`, '_blank');
 });
