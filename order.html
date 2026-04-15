@@ -1,418 +1,307 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Service | JR Electradrive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --red: #E31E24;
-            --dark-bg: #090909;
-            --surface: rgba(255,255,255,0.06);
-            --surface-strong: rgba(255,255,255,0.12);
-            --white: #ffffff;
-            --gray: #b3b3b3;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Service | JR Electradrive</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
-        html { scroll-behavior: smooth; }
+<style>
+:root {
+    --red: #E31E24;
+    --dark-bg: #090909;
+    --surface: rgba(255,255,255,0.06);
+    --white: #ffffff;
+    --gray: #b3b3b3;
+}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--white);
-            line-height: 1.65;
-            overflow-x: hidden;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        ::selection { background: rgba(227,30,36,0.35); color: #fff; }
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--dark-bg);
+    color: var(--white);
+}
 
-        header {
-            background: rgba(4,4,4,0.78);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(14px);
-        }
+/* NAV */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 18px 5%;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 5%;
+}
 
-        .logo img { max-height: 64px; width: auto; max-width: 100%; }
+.logo img { max-height: 60px; }
 
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            list-style: none;
-        }
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
 
-        .nav-links li { margin: 0; }
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--white);
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            transition: color 0.25s ease;
-        }
+.nav-links a:hover { color: var(--red); }
 
-        .nav-links a:hover { color: var(--red); }
+/* HERO */
+.order-hero {
+    padding: 160px 5% 80px;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), url('1776086040281.png');
+    background-size: cover;
+}
 
-        .order-hero {
-            padding: 160px 5% 60px;
-            min-height: 65vh;
-            background-image: linear-gradient(180deg, rgba(18,18,18,0.88), rgba(18,18,18,0.96)), url('1776086040281.png');
-            background-size: cover;
-            background-position: center;
-            display: grid;
-            place-items: center;
-            text-align: center;
-        }
+.order-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 20px;
+}
 
-        .order-hero h1 {
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            font-weight: 900;
-            margin-bottom: 22px;
-        }
+.order-hero p {
+    color: var(--gray);
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 30px;
+}
 
-        .order-hero p {
-            color: var(--gray);
-            max-width: 760px;
-            margin: 0 auto 34px;
-            line-height: 1.8;
-            font-size: 1rem;
-        }
+.btn {
+    background: var(--red);
+    padding: 14px 30px;
+    border-radius: 999px;
+    color: white;
+    font-weight: 900;
+    text-decoration: none;
+    transition: 0.3s;
+}
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 36px;
-            text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            border-radius: 999px;
-            transition: transform 0.25s ease, background 0.25s ease;
-            min-width: 180px;
-            border: 2px solid transparent;
-            color: var(--white);
-        }
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(227,30,36,0.5);
+}
 
-        .btn:hover { transform: translateY(-2px); }
+/* FORM */
+.order-section {
+    padding: 60px 5%;
+    max-width: 900px;
+    margin: auto;
+}
 
-        .btn-primary {
-            background: var(--red);
-            color: var(--white);
-            border-color: var(--red);
-        }
+.form-card {
+    background: var(--surface);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+}
 
-        .order-hero .btn {
-            min-width: 220px;
-        }
+.form-group { margin-bottom: 18px; }
 
-        .order-section {
-            padding: 80px 5% 100px;
-            max-width: 960px;
-            margin: 0 auto;
-        }
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    color: var(--red);
+    font-weight: 700;
+}
 
-        .order-intro {
-            display: grid;
-            gap: 18px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #111;
+    color: white;
+}
 
-        .order-intro h1 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            margin: 0;
-        }
+input:focus, textarea:focus, select:focus {
+    border-color: var(--red);
+    outline: none;
+}
 
-        .order-intro p {
-            color: var(--gray);
-            line-height: 1.8;
-            max-width: 740px;
-            margin: 0 auto;
-        }
+textarea { min-height: 120px; }
 
-        .form-card {
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 28px;
-            box-shadow: 0 25px 70px rgba(0,0,0,0.25);
-            padding: 36px;
-        }
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
 
-        .form-group { margin-bottom: 20px; }
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--red);
+    border: none;
+    border-radius: 999px;
+    font-weight: 900;
+    margin-top: 10px;
+    cursor: pointer;
+}
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            color: var(--red);
-        }
+.submit-btn:hover {
+    background: white;
+    color: var(--red);
+}
 
-        input, select, textarea {
-            width: 100%;
-            padding: 14px;
-            background: #121212;
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 12px;
-            color: white;
-            font-family: inherit;
-        }
+/* FOOTER */
+.footer {
+    padding: 50px 5%;
+    text-align: center;
+    color: var(--gray);
+}
 
-        textarea { resize: vertical; min-height: 120px; }
+/* FLOATING BUTTON */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-weight: 900;
+    text-decoration: none;
+    color: black;
+}
 
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: var(--red);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: var(--red);
-            color: white;
-            border: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-top: 10px;
-            transition: 0.25s ease;
-            border-radius: 999px;
-        }
-
-        .submit-btn:hover { background: white; color: var(--red); }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .footer {
-            padding: 60px 5% 80px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 40px;
-            margin-bottom: 32px;
-        }
-
-        .footer h3, .footer h4 { margin-bottom: 16px; }
-
-        .footer p, .footer a { color: var(--gray); line-height: 1.8; text-decoration: none; }
-
-        .footer-nav { display: flex; flex-wrap: wrap; gap: 18px; }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 24px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-            color: var(--gray);
-            font-size: 0.92rem;
-        }
-
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 22px;
-            right: 22px;
-            z-index: 1100;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            background: #25D366;
-            color: #111;
-            border-radius: 999px;
-            box-shadow: 0 18px 40px rgba(0,0,0,0.24);
-            text-decoration: none;
-            font-weight: 900;
-            transition: transform 0.2s ease;
-        }
-
-        .floating-whatsapp:hover { transform: translateY(-2px); }
-
-        @media (max-width: 860px) {
-            .form-row { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 620px) {
-            .navbar { justify-content: center; padding: 16px 4%; }
-            .order-hero { padding-top: 130px; }
-            .footer-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+/* MOBILE */
+@media (max-width: 768px) {
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { flex-wrap: wrap; justify-content: center; }
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo"><img src="e57fb09b-db12-4a2b-b3ca-77a7db54df98.png" alt="JR ELECTRADRIVE"></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="order.html" style="color: var(--red);">Book Service</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="e57fb09b-db12-4a2b-b3ca-77a7db54df98.png">
+        </div>
 
-    <main>
-        <section class="order-hero">
-            <div class="hero-copy">
-                <span class="tagline">Book your service</span>
-                <h1>Submit your request and get expert electrical support quickly.</h1>
-                <p>Our WhatsApp-powered booking makes it easy to schedule diagnostics, charging system service, harness repair, and more.</p>
-                <a href="https://wa.me/263787747619" class="btn btn-primary">Send us a message</a>
-            </div>
-        </section>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="order.html" style="color:#E31E24;">Book</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <section class="order-section">
-            <div class="order-intro">
-                <h1>Book a <span style="color: var(--red);">Service</span></h1>
-                <p>Complete the form below and our team will contact you with the next available appointment.</p>
-            </div>
-            <div class="form-card">
-                <form id="whatsappForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" id="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <input type="email" id="email" placeholder="yourname@gmail.com" required>
-                        </div>
-                    </div>
+<main>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Location</label>
-                            <input type="text" id="location" placeholder="e.g. Harare CBD, Greendale" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Vehicle Type</label>
-                            <select id="vehicleType">
-                                <option value="Motor Vehicle">Motor Vehicle</option>
-                                <option value="Truck">Truck</option>
-                                <option value="Motorcycle">Motorcycle</option>
-                            </select>
-                        </div>
-                    </div>
+<section class="order-hero">
+    <h1>Book Your Service</h1>
+    <p>Fast, professional auto electrical diagnostics and repair. Send your request directly via WhatsApp.</p>
+    <a href="https://wa.me/263787747619" class="btn">Message on WhatsApp</a>
+</section>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Vehicle Brand</label>
-                            <input type="text" id="brand" placeholder="e.g. Isuzu, Mercedes" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Service Required</label>
-                            <select id="service">
-                                <option value="Diagnostics">Electrical Diagnostics</option>
-                                <option value="Wiring/Harness">Wiring & Harness Repair</option>
-                                <option value="Alternator/Starter">Alternator & Starter Repair</option>
-                                <option value="Battery/Charging">Battery & Charging Systems</option>
-                                <option value="Other">Other Electrical Fault</option>
-                            </select>
-                        </div>
-                    </div>
+<section class="order-section">
 
-                    <div class="form-group">
-                        <label>Describe the Fault</label>
-                        <textarea id="fault" placeholder="Please describe what is happening with the vehicle..."></textarea>
-                    </div>
+<div class="form-card">
+<form id="whatsappForm">
 
-                    <button type="submit" class="submit-btn">Send to WhatsApp</button>
-                </form>
-            </div>
-        </section>
+<div class="form-row">
+<div class="form-group">
+<label>Full Name</label>
+<input type="text" id="name" required>
+</div>
 
-        <footer class="footer">
-            <div class="footer-grid">
-                <div>
-                    <h3>Fast Booking</h3>
-                    <p>We respond quickly via WhatsApp and keep your service appointment moving with clear communication and expert support.</p>
-                </div>
-                <div>
-                    <h4>Quick links</h4>
-                    <div class="footer-nav">
-                        <a href="index.html">Home</a>
-                        <a href="services.html">Services</a>
-                        <a href="about.html">About</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 JR Electradrive • Harare, Zimbabwe</p>
-                <p>Your premium auto electrical partner.</p>
-            </div>
-        </footer>
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="email" required>
+</div>
+</div>
 
-        <a class="floating-whatsapp" href="https://wa.me/263787747619" target="_blank">💬 WhatsApp</a>
-    </main>
+<div class="form-row">
+<div class="form-group">
+<label>Location</label>
+<input type="text" id="location" required>
+</div>
 
-    <script>
-        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+<div class="form-group">
+<label>Vehicle Type</label>
+<select id="vehicleType">
+<option>Car</option>
+<option>Truck</option>
+<option>Motorcycle</option>
+</select>
+</div>
+</div>
 
-            // Collect Data
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const loc = document.getElementById('location').value;
-            const vType = document.getElementById('vehicleType').value;
-            const brand = document.getElementById('brand').value;
-            const service = document.getElementById('service').value;
-            const fault = document.getElementById('fault').value || "No description provided";
+<div class="form-group">
+<label>Vehicle Brand</label>
+<input type="text" id="brand" required>
+</div>
 
-            const phoneNumber = "263787747619"; 
-            
-            // Format for WhatsApp
-            const message = `*NEW SERVICE ORDER*%0A` +
-                            `--------------------------%0A` +
-                            `*Name:* ${name}%0A` +
-                            `*Email:* ${email}%0A` +
-                            `*Location:* ${loc}%0A` +
-                            `*Vehicle:* ${vType} (${brand})%0A` +
-                            `*Service:* ${service}%0A` +
-                            `*Fault Description:* ${fault}%0A` +
-                            `--------------------------`;
+<div class="form-group">
+<label>Service Needed</label>
+<select id="service">
+<option>Diagnostics</option>
+<option>Wiring Repair</option>
+<option>Alternator</option>
+<option>Battery</option>
+<option>Other</option>
+</select>
+</div>
 
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-        });
-    </script>
+<div class="form-group">
+<label>Problem Description</label>
+<textarea id="fault"></textarea>
+</div>
+
+<button type="submit" class="submit-btn">Send to WhatsApp</button>
+
+</form>
+</div>
+
+</section>
+
+<footer class="footer">
+<p>© 2026 JR Electradrive • Harare, Zimbabwe</p>
+</footer>
+
+<a class="floating-whatsapp" href="https://wa.me/263787747619">💬 WhatsApp</a>
+
+</main>
+
+<script>
+document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const loc = document.getElementById('location').value;
+    const vType = document.getElementById('vehicleType').value;
+    const brand = document.getElementById('brand').value;
+    const service = document.getElementById('service').value;
+    const fault = document.getElementById('fault').value || "No description";
+
+    const msg = `*SERVICE BOOKING*%0A
+Name: ${name}%0A
+Email: ${email}%0A
+Location: ${loc}%0A
+Vehicle: ${vType} (${brand})%0A
+Service: ${service}%0A
+Problem: ${fault}`;
+
+    window.open(`https://wa.me/263787747619?text=${msg}`, '_blank');
+});
+</script>
 
 </body>
 </html>
