@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | JR Electradrive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #E31E24;
+            --dark-bg: #090909;
+            --surface: rgba(255,255,255,0.06);
+            --surface-strong: rgba(255,255,255,0.12);
+            --white: #ffffff;
+            --gray: #b3b3b3;
+            --gold: #FFD700;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: rgba(227,30,36,0.35); color: #fff; }
+
+        header {
+            background: rgba(4,4,4,0.78);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(14px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 18px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .logo img { max-height: 64px; width: auto; max-width: 100%; }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links li { margin: 0; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover { color: var(--red); }
+
+        .hero-section {
+            padding: 160px 5% 60px;
+            min-height: 85vh;
+            background-image: linear-gradient(180deg, rgba(18,18,18,0.85), rgba(18,18,18,0.95)), url('1776086040281.png');
+            background-size: cover;
+            background-position: center;
+            display: grid;
+            place-items: center;
+            position: relative;
+        }
+
+        .hero-panel {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(3rem, 5vw, 4.4rem);
+            font-weight: 900;
+            line-height: 1.02;
+            margin-bottom: 24px;
+            max-width: 12ch;
+        }
+
+        .hero-copy p {
+            color: var(--gray);
+            font-size: 1rem;
+            max-width: 720px;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-radius: 999px;
+            transition: transform 0.25s ease, background 0.25s ease;
+            min-width: 180px;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        .btn-primary {
+            background: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.08);
+            color: var(--white);
+            border-color: rgba(255,255,255,0.14);
+        }
+
+        .btn-secondary:hover { background: var(--red); color: #111; }
+
+        .hero-card {
+            padding: 32px;
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 28px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+        }
+
+        .hero-card h3 { font-size: 1.35rem; margin-bottom: 14px; }
+        .hero-card p { color: var(--gray); line-height: 1.8; }
+
+        .values-section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .values-section h2 { font-size: 2.7rem; margin-bottom: 20px; }
+        .values-section p { color: var(--gray); max-width: 760px; margin-bottom: 40px; line-height: 1.8; }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .value-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 28px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(227,30,36,0.5);
+        }
+
+        .value-card .icon {
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 18px;
+        }
+
+        .value-card h3 { margin-bottom: 12px; font-size: 1.1rem; }
+        .value-card p { color: var(--gray); line-height: 1.8; }
+
+        .feedback-section {
+            padding: 80px 5%;
+            background: rgba(255,255,255,0.03);
+            text-align: center;
+        }
+
+        .rating-summary { margin-bottom: 42px; }
+        .rating-summary h2 { font-size: 2.4rem; margin-bottom: 12px; }
+        .rating-summary p { color: var(--gray); margin-top: 10px; }
+
+        .feedback-container {
+            max-width: 660px;
+            margin: 0 auto;
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 24px;
+            border-top: 4px solid var(--red);
+        }
+
+        .star-rating { margin-bottom: 30px; display: flex; justify-content: center; gap: 10px; }
+        .star-select { font-size: 3rem; color: var(--gray); cursor: pointer; transition: 0.2s; }
+        .star-select:hover, .star-select.active { color: var(--gold); transform: scale(1.1); }
+
+        textarea {
+            width: 100%;
+            min-height: 130px;
+            background: #121212;
+            border: 1px solid rgba(255,255,255,0.08);
+            color: white;
+            padding: 18px;
+            border-radius: 14px;
+            resize: none;
+            margin-bottom: 20px;
+            font-family: inherit;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--red);
+            color: white;
+            border: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: 0.25s ease;
+            border-radius: 999px;
+        }
+
+        .submit-btn:hover { background: white; color: var(--red); }
+
+        .footer {
+            padding: 60px 5% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+
+        .footer h3, .footer h4 { margin-bottom: 16px; }
+
+        .footer p, .footer a { color: var(--gray); line-height: 1.8; }
+        .footer a { text-decoration: none; }
+
+        .footer-nav { display: flex; flex-wrap: wrap; gap: 18px; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            color: var(--gray);
+            font-size: 0.92rem;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 1100;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: #25D366;
+            color: #111;
+            border-radius: 999px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.24);
+            text-decoration: none;
+            font-weight: 900;
+            transition: transform 0.2s ease;
+        }
+
+        .floating-whatsapp:hover { transform: translateY(-2px); }
+
+        @media (max-width: 1024px) {
+            .hero-panel { grid-template-columns: 1fr; }
+            .values-grid, .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 860px) {
+            .hero-section { padding-top: 140px; }
+        }
+
+        @media (max-width: 620px) {
+            .navbar { justify-content: center; padding: 16px 4%; }
+            .hero-section { padding-top: 130px; }
+            .values-grid { gap: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="e57fb09b-db12-4a2b-b3ca-77a7db54df98.png" alt="JR ELECTRADRIVE"></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html" style="color: var(--red);">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="order.html">Book Service</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-panel">
+                <div class="hero-copy">
+                    <span class="tagline">Trusted electrical specialists</span>
+                    <h1>We keep Harare’s vehicles powered with premium diagnostics and wiring expertise.</h1>
+                    <p>JR Electradrive delivers fast, dependable service across cars, trucks, and commercial fleets using the latest diagnostic tools and quality-tested repairs.</p>
+                    <div class="hero-buttons">
+                        <a href="services.html" class="btn btn-primary">View Services</a>
+                        <a href="order.html" class="btn btn-secondary">Book A Service</a>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <h3>Why drivers choose us</h3>
+                    <p>High-performance repairs, transparent pricing, and a dedicated WhatsApp booking channel mean your vehicle gets expert care without the wait.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <h2>Premium electrical services</h2>
+            <p>Our team combines deep technical knowledge with a hospitality-first approach to deliver repairs that feel premium from first contact to final handover.</p>
+            <div class="values-grid">
+                <article class="value-card">
+                    <div class="icon">⚡</div>
+                    <h3>Advanced diagnostics</h3>
+                    <p>Rapid fault detection using dealer-level scan tools for ECU, sensor and charging system issues.</p>
+                </article>
+                <article class="value-card">
+                    <div class="icon">🔌</div>
+                    <h3>Wiring & harness repair</h3>
+                    <p>Expert harness restorations and splicing that keep electrical systems safe and durable.</p>
+                </article>
+                <article class="value-card">
+                    <div class="icon">🚛</div>
+                    <h3>Commercial & fleet</h3>
+                    <p>Responsive support for trucks, trailers, and hybrid systems with a focus on uptime and compliance.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="feedback-section">
+            <div class="rating-summary">
+                <h2>Customer satisfaction</h2>
+                <div id="average-score">5.0</div>
+                <div class="avg-stars" id="display-stars">★★★★★</div>
+                <p><span id="review-count">3</span> verified reviews</p>
+            </div>
+
+            <div class="feedback-container">
+                <h3>Rate your experience</h3>
+                <div class="star-rating">
+                    <span class="star-select" data-val="1">★</span>
+                    <span class="star-select" data-val="2">★</span>
+                    <span class="star-select" data-val="3">★</span>
+                    <span class="star-select" data-val="4">★</span>
+                    <span class="star-select" data-val="5">★</span>
+                </div>
+                <textarea id="feedback-text" placeholder="Tell us about the service you received..."></textarea>
+                <button class="submit-btn" onclick="processFeedback()">Submit Feedback</button>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-grid">
+                <div>
+                    <h3>JR Electradrive</h3>
+                    <p>Premium automotive electrical specialists in Harare, delivering expert diagnostics, wiring repair, and charging system service.</p>
+                </div>
+                <div>
+                    <h4>Quick links</h4>
+                    <div class="footer-nav">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="order.html">Book Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 JR Electradrive • Harare, Zimbabwe</p>
+                <p>Expert care for every vehicle.</p>
+            </div>
+        </footer>
+
+        <a class="floating-whatsapp" href="https://wa.me/263787747619" target="_blank">💬 WhatsApp</a>
+    </main>
+
+    <script>
+        let currentRating = 0;
+        const stars = document.querySelectorAll('.star-select');
+
+        // STAR INTERACTION
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                currentRating = parseInt(star.getAttribute('data-val'));
+                highlightStars(currentRating);
+            });
+        });
+
+        function highlightStars(count) {
+            stars.forEach(s => {
+                const val = parseInt(s.getAttribute('data-val'));
+                s.style.color = val <= count ? 'var(--gold)' : 'var(--gray)';
+            });
+        }
+
+        function processFeedback() {
+            const feedback = document.getElementById('feedback-text').value;
+
+            if (currentRating === 0) {
+                alert("Please select a star rating!");
+                return;
+            }
+
+            // 1. CALCULATE NEW AVERAGE
+            // Pull existing ratings from local storage or use baseline of [5, 5, 5]
+            let ratings = JSON.parse(localStorage.getItem('jr_ratings')) || [5, 5, 5];
+            ratings.push(currentRating);
+            localStorage.setItem('jr_ratings', JSON.stringify(ratings));
+
+            // 2. UPDATE SCREEN
+            const average = (ratings.reduce((a, b) => a + b) / ratings.length).toFixed(1);
+            document.getElementById('average-score').innerText = average;
+            document.getElementById('review-count').innerText = ratings.length;
+
+            // 3. WHATSAPP FEEDBACK (Text Only)
+            const whatsappNumber = "263787747619";
+            const message = `*JR ELECTRADRIVE FEEDBACK*%0A--------------------------%0A${feedback}`;
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+            // Reset
+            document.getElementById('feedback-text').value = "";
+            currentRating = 0;
+            highlightStars(0);
+        }
+
+        // LOAD SAVED DATA
+        window.onload = () => {
+            let ratings = JSON.parse(localStorage.getItem('jr_ratings')) || [5, 5, 5];
+            const average = (ratings.reduce((a, b) => a + b) / ratings.length).toFixed(1);
+            document.getElementById('average-score').innerText = average;
+            document.getElementById('review-count').innerText = ratings.length;
+        }
+    </script>
+</body>
+</html>

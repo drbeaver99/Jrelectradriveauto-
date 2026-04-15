@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | JR Electradrive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --red: #E31E24;
+            --dark-bg: #090909;
+            --surface: rgba(255,255,255,0.06);
+            --surface-strong: rgba(255,255,255,0.12);
+            --white: #ffffff;
+            --gray: #b3b3b3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: rgba(227,30,36,0.35); color: #fff; }
+
+        header {
+            background: rgba(4,4,4,0.78);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(14px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 18px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .logo img { max-height: 64px; width: auto; max-width: 100%; }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links li { margin: 0; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover { color: var(--red); }
+
+        .contact-hero {
+            padding: 160px 5% 60px;
+            min-height: 70vh;
+            background-image: linear-gradient(180deg, rgba(18,18,18,0.88), rgba(18,18,18,0.96)), url('1776086040281.png');
+            background-size: cover;
+            background-position: center;
+            display: grid;
+            place-items: center;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 22px;
+        }
+
+        .contact-hero p {
+            color: var(--gray);
+            max-width: 740px;
+            margin: 0 auto 34px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-radius: 999px;
+            transition: transform 0.25s ease, background 0.25s ease;
+            min-width: 180px;
+            border: 2px solid transparent;
+            color: var(--white);
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        .btn-primary {
+            background: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+        }
+
+        .contact-hero .btn {
+            min-width: 200px;
+        }
+
+        .contact-panel {
+            padding: 80px 5% 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 28px;
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact-card h3 {
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+
+        .contact-meta {
+            display: grid;
+            gap: 18px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .btn-call, .btn-wa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px;
+            text-decoration: none;
+            color: white;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 999px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .btn-call { background: var(--red); }
+        .btn-wa { background: #25D366; }
+
+        .btn-call:hover, .btn-wa:hover { opacity: 0.9; transform: translateY(-3px); }
+
+        .social-title {
+            margin-top: 40px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--gray);
+            letter-spacing: 0.12em;
+            font-size: 0.85rem;
+        }
+
+        .social-grid {
+            margin-top: 18px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            width: 56px;
+            height: 56px;
+            background: #1b1b1d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.4rem;
+            text-decoration: none;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .social-icon:hover { background: var(--red); transform: scale(1.05); }
+
+        .profile-container {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 30px;
+            display: grid;
+            place-items: center;
+            gap: 20px;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+        }
+
+        .profile-caption {
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+        }
+
+        .footer {
+            padding: 60px 5% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+
+        .footer h3, .footer h4 { margin-bottom: 16px; }
+
+        .footer p, .footer a { color: var(--gray); line-height: 1.8; text-decoration: none; }
+
+        .footer-nav { display: flex; flex-wrap: wrap; gap: 18px; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            color: var(--gray);
+            font-size: 0.92rem;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 1100;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: #25D366;
+            color: #111;
+            border-radius: 999px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.24);
+            text-decoration: none;
+            font-weight: 900;
+            transition: transform 0.2s ease;
+        }
+
+        .floating-whatsapp:hover { transform: translateY(-2px); }
+
+        @media (max-width: 1024px) {
+            .contact-panel, .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 860px) {
+            .contact-hero { padding-top: 140px; }
+        }
+
+        @media (max-width: 620px) {
+            .navbar { justify-content: center; padding: 16px 4%; }
+            .contact-hero { padding-top: 130px; }
+            .action-buttons { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="e57fb09b-db12-4a2b-b3ca-77a7db54df98.png" alt="JR ELECTRADRIVE"></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+	            <li><a href="order.html">Book A Service</a></li>
+                <li><a href="contact.html" style="color: var(--red);">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="hero-copy">
+                <span class="tagline">Contact the experts</span>
+                <h1>Reach JR Electradrive for fast, premium auto electrical support.</h1>
+                <p>Send a quick WhatsApp message or call us directly to book diagnostics, wiring repairs, charging system service, and heavy-duty fleet support.</p>
+                <a href="https://wa.me/263787747619" class="btn btn-primary">Message on WhatsApp</a>
+            </div>
+        </section>
+
+        <section class="contact-panel">
+            <div class="contact-card">
+                <h3>Get in touch</h3>
+                <p>Harare, Zimbabwe</p>
+                <div class="contact-meta">
+                    <p><strong>Phone:</strong> +263 787 747 619</p>
+                    <p><strong>Email:</strong> info@jrelectradrive.co.zw</p>
+                </div>
+                <div class="action-buttons">
+                    <a href="tel:+263787747619" class="btn-call"><i class="fas fa-phone"></i> Call Now</a>
+                    <a href="https://wa.me/263787747619?text=Hi%20JrElectradrive!%20I%20need%20expert%20help%20with%20my%20vehicle." class="btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+                <p class="social-title">Follow JrElectradrive</p>
+                <div class="social-grid">
+                    <a href="https://www.facebook.com/JrElectradrive" target="_blank" rel="noopener noreferrer" aria-label="JR Electradrive Facebook" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/jrelectradrive_auto" target="_blank" rel="noopener noreferrer" aria-label="JR Electradrive Instagram" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@jrelectradrive_auto" target="_blank" rel="noopener noreferrer" aria-label="JR Electradrive TikTok" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="profile-container">
+                <img src="1776086040281.png" alt="JrElectradrive Specialist" class="profile-image">
+                <p class="profile-caption">Professional Electrical Service</p>
+                <div class="contact-card">
+                    <h3>Office hours</h3>
+                    <p>Mon - Sat: 8am to 6pm</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-grid">
+                <div>
+                    <h3>JR Electradrive</h3>
+                    <p>High-quality electrical repairs and diagnostics for cars, trucks, and fleet vehicles across Harare.</p>
+                </div>
+                <div>
+                    <h4>Quick links</h4>
+                    <div class="footer-nav">
+                        <a href="index.html">Home</a>
+                        <a href="services.html">Services</a>
+                        <a href="about.html">About</a>
+                        <a href="order.html">Book Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 JR Electradrive • Designed for premium service.</p>
+                <p>Harare, Zimbabwe</p>
+            </div>
+        </footer>
+
+        <a class="floating-whatsapp" href="https://wa.me/263787747619" target="_blank">💬 WhatsApp</a>
+    </main>
+
+</body>
+</html>

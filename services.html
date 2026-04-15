@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | JR Electradrive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #E31E24;
+            --dark-bg: #090909;
+            --surface: rgba(255,255,255,0.06);
+            --surface-strong: rgba(255,255,255,0.12);
+            --white: #ffffff;
+            --gray: #b3b3b3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: rgba(227,30,36,0.35); color: #fff; }
+
+        header {
+            background: rgba(4,4,4,0.78);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(14px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 18px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .logo img { max-height: 64px; width: auto; max-width: 100%; }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links li { margin: 0; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            transition: color 0.25s ease;
+        }
+
+        .nav-links a:hover { color: var(--red); }
+
+        .services-hero {
+            min-height: 80vh;
+            padding: 160px 5% 60px;
+            background-image: linear-gradient(180deg, rgba(18,18,18,0.88), rgba(18,18,18,0.96)), url('1776086040281.png');
+            background-size: cover;
+            background-position: center;
+            display: grid;
+            place-items: center;
+        }
+
+        .services-hero .hero-copy {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .services-hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .services-hero p {
+            color: var(--gray);
+            max-width: 780px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-radius: 999px;
+            transition: transform 0.25s ease, background 0.25s ease;
+            min-width: 180px;
+            border: 2px solid transparent;
+            color: var(--white);
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        .btn-primary {
+            background: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+        }
+
+        .services-hero .btn {
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            padding: 80px 5% 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(227,30,36,0.5);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            display: grid;
+            place-items: center;
+            border-radius: 18px;
+            background: rgba(227,30,36,0.14);
+            color: var(--red);
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 { font-size: 1.25rem; margin: 0; }
+        .service-card p { color: var(--gray); line-height: 1.8; flex: 1; }
+
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-mini {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            background: #fff;
+            color: var(--red);
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 999px;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-mini:hover { transform: translateY(-2px); }
+
+        .footer {
+            padding: 60px 5% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 40px;
+            margin-bottom: 32px;
+        }
+
+        .footer h3, .footer h4 { margin-bottom: 16px; }
+
+        .footer p, .footer a { color: var(--gray); line-height: 1.8; text-decoration: none; }
+
+        .footer-nav { display: flex; flex-wrap: wrap; gap: 18px; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            color: var(--gray);
+            font-size: 0.92rem;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 1100;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: #25D366;
+            color: #111;
+            border-radius: 999px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.24);
+            text-decoration: none;
+            font-weight: 900;
+            transition: transform 0.2s ease;
+        }
+
+        .floating-whatsapp:hover { transform: translateY(-2px); }
+
+        @media (max-width: 1024px) {
+            .services-grid, .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 860px) {
+            .services-hero { padding-top: 140px; }
+        }
+
+        @media (max-width: 620px) {
+            .navbar { justify-content: center; padding: 16px 4%; }
+            .services-hero { padding-top: 130px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="e57fb09b-db12-4a2b-b3ca-77a7db54df98.png" alt="JR ELECTRADRIVE"></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html" style="color: var(--red);">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+	            <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="order.html">Book Service</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services-hero">
+            <div class="hero-copy">
+                <span class="tagline">Our core capabilities</span>
+                <h1>Complete electrical support for every vehicle, from passenger cars to commercial fleets.</h1>
+                <p>JR Electradrive brings premium service delivery through expert technicians, fast diagnostics, and repairs you can trust.</p>
+                <a href="order.html" class="btn btn-primary">Book Service</a>
+            </div>
+        </section>
+
+        <section class="services-grid">
+            <article class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Diagnostics & troubleshooting</h3>
+                <p>Dealer-level fault finding for engine electronics, sensors, wiring, and charging systems.</p>
+                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
+            </article>
+            <article class="service-card">
+                <div class="service-icon">🔌</div>
+                <h3>Wiring harness repair</h3>
+                <p>Full harness restoration, corrosion control, and durable rewiring for complete system reliability.</p>
+                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
+            </article>
+            <article class="service-card">
+                <div class="service-icon">🔋</div>
+                <h3>Battery & charging systems</h3>
+                <p>Testing, replacement, and tuning for batteries, alternators, starters, and charging performance.</p>
+                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
+            </article>
+            <article class="service-card">
+                <div class="service-icon">🚛</div>
+                <h3>Truck & trailer electrical</h3>
+                <p>Fleet-ready maintenance, lighting repair, and heavy-duty electrical diagnostics for commercial vehicles.</p>
+                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
+            </article>
+            <article class="service-card">
+                <div class="service-icon">🛑</div>
+                <h3>EBS & ABS systems</h3>
+                <p>Precise troubleshooting and repair of electronic braking systems to keep your vehicle safe and compliant.</p>
+                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
+            </article>
+            <article class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Starter & alternator repair</h3>
+                <p>Comprehensive testing and service for starting and charging components across all makes and models.</p>
+                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
+            </article>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-grid">
+                <div>
+                    <h3>JR Electradrive Services</h3>
+                    <p>Premium auto electrical work, tailored to both private vehicles and commercial fleets with fast booking and expert diagnostics.</p>
+                </div>
+                <div>
+                    <h4>Quick links</h4>
+                    <div class="footer-nav">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="order.html">Book Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 JR Electradrive • Harare, Zimbabwe</p>
+                <p>Fast, premium electrical repairs you can trust.</p>
+            </div>
+        </footer>
+
+        <a class="floating-whatsapp" href="https://wa.me/263787747619" target="_blank">💬 WhatsApp</a>
+    </main>
+</body>
+</html>
