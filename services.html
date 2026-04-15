@@ -1,351 +1,262 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | JR Electradrive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --red: #E31E24;
-            --dark-bg: #090909;
-            --surface: rgba(255,255,255,0.06);
-            --surface-strong: rgba(255,255,255,0.12);
-            --white: #ffffff;
-            --gray: #b3b3b3;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | JR Electradrive</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
-        html { scroll-behavior: smooth; }
+<style>
+:root {
+    --red:#E31E24;
+    --dark:#090909;
+    --gray:#b3b3b3;
+}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--white);
-            line-height: 1.65;
-            overflow-x: hidden;
-        }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        ::selection { background: rgba(227,30,36,0.35); color: #fff; }
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--dark);
+    color:white;
+}
 
-        header {
-            background: rgba(4,4,4,0.78);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(14px);
-        }
+/* HEADER */
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 18px 5%;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 5%;
+    max-width:1200px;
+    margin:auto;
+    flex-wrap:wrap;
+}
 
-        .logo img { max-height: 64px; width: auto; max-width: 100%; }
+.logo img{height:55px;}
 
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            list-style: none;
-        }
+.nav-links{
+    display:flex;
+    gap:20px;
+    list-style:none;
+    flex-wrap:wrap;
+}
 
-        .nav-links li { margin: 0; }
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-weight:700;
+    font-size:0.85rem;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--white);
-            font-size: 0.95rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            transition: color 0.25s ease;
-        }
+.nav-links a:hover{color:var(--red);}
 
-        .nav-links a:hover { color: var(--red); }
+/* HERO */
+.hero{
+    padding:140px 5% 60px;
+    text-align:center;
+    background:linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)),
+    url('1776086040281.png') center/cover;
+}
 
-        .services-hero {
-            min-height: 80vh;
-            padding: 160px 5% 60px;
-            background-image: linear-gradient(180deg, rgba(18,18,18,0.88), rgba(18,18,18,0.96)), url('1776086040281.png');
-            background-size: cover;
-            background-position: center;
-            display: grid;
-            place-items: center;
-        }
+.hero h1{
+    font-size:clamp(2.2rem,6vw,4rem);
+    font-weight:900;
+}
 
-        .services-hero .hero-copy {
-            max-width: 900px;
-            text-align: center;
-        }
+.hero p{
+    color:var(--gray);
+    max-width:700px;
+    margin:15px auto;
+}
 
-        .services-hero h1 {
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 20px;
-        }
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:var(--red);
+    border-radius:50px;
+    font-weight:800;
+    text-decoration:none;
+    color:white;
+    margin-top:10px;
+}
 
-        .services-hero p {
-            color: var(--gray);
-            max-width: 780px;
-            margin: 0 auto 32px;
-            line-height: 1.8;
-            font-size: 1rem;
-        }
+/* HEX IMAGES */
+.hex-section{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    padding:60px 5%;
+}
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 36px;
-            text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            border-radius: 999px;
-            transition: transform 0.25s ease, background 0.25s ease;
-            min-width: 180px;
-            border: 2px solid transparent;
-            color: var(--white);
-        }
+.hex{
+    width:220px;
+    height:250px;
+    clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);
+    overflow:hidden;
+    border:3px solid var(--red);
+    transition:0.3s;
+}
 
-        .btn:hover { transform: translateY(-2px); }
+.hex img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
-        .btn-primary {
-            background: var(--red);
-            color: var(--white);
-            border-color: var(--red);
-        }
+.hex:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 25px rgba(227,30,36,0.6);
+}
 
-        .services-hero .btn {
-            margin: 0 auto;
-        }
+/* SERVICES */
+.services{
+    padding:40px 5%;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
 
-        .services-grid {
-            padding: 80px 5% 100px;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
-        }
+.card{
+    background:#111;
+    padding:25px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.1);
+    transition:0.3s;
+}
 
-        .service-card {
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
+.card:hover{
+    transform:translateY(-5px);
+    border-color:var(--red);
+}
 
-        .service-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(227,30,36,0.5);
-        }
+.card h3{
+    margin-bottom:10px;
+}
 
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            display: grid;
-            place-items: center;
-            border-radius: 18px;
-            background: rgba(227,30,36,0.14);
-            color: var(--red);
-            font-size: 1.8rem;
-        }
+.card p{
+    color:var(--gray);
+    font-size:0.9rem;
+}
 
-        .service-card h3 { font-size: 1.25rem; margin: 0; }
-        .service-card p { color: var(--gray); line-height: 1.8; flex: 1; }
+/* FOOTER */
+.footer{
+    padding:50px 5%;
+    text-align:center;
+    color:var(--gray);
+}
 
-        .service-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+/* WHATSAPP */
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    padding:12px 16px;
+    border-radius:50px;
+    font-weight:900;
+    color:#111;
+    text-decoration:none;
+}
 
-        .btn-mini {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 18px;
-            background: #fff;
-            color: var(--red);
-            text-decoration: none;
-            font-weight: 900;
-            text-transform: uppercase;
-            border-radius: 999px;
-            transition: transform 0.2s ease;
-        }
-
-        .btn-mini:hover { transform: translateY(-2px); }
-
-        .footer {
-            padding: 60px 5% 80px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 40px;
-            margin-bottom: 32px;
-        }
-
-        .footer h3, .footer h4 { margin-bottom: 16px; }
-
-        .footer p, .footer a { color: var(--gray); line-height: 1.8; text-decoration: none; }
-
-        .footer-nav { display: flex; flex-wrap: wrap; gap: 18px; }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 24px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-            color: var(--gray);
-            font-size: 0.92rem;
-        }
-
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 22px;
-            right: 22px;
-            z-index: 1100;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            background: #25D366;
-            color: #111;
-            border-radius: 999px;
-            box-shadow: 0 18px 40px rgba(0,0,0,0.24);
-            text-decoration: none;
-            font-weight: 900;
-            transition: transform 0.2s ease;
-        }
-
-        .floating-whatsapp:hover { transform: translateY(-2px); }
-
-        @media (max-width: 1024px) {
-            .services-grid, .footer-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 860px) {
-            .services-hero { padding-top: 140px; }
-        }
-
-        @media (max-width: 620px) {
-            .navbar { justify-content: center; padding: 16px 4%; }
-            .services-hero { padding-top: 130px; }
-        }
-    </style>
+/* MOBILE */
+@media(max-width:600px){
+    .navbar{flex-direction:column;gap:10px;}
+    .hex{width:160px;height:180px;}
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo"><img src="e57fb09b-db12-4a2b-b3ca-77a7db54df98.png" alt="JR ELECTRADRIVE"></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html" style="color: var(--red);">Services</a></li>
-                <li><a href="about.html">About Us</a></li>
-	            <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="order.html">Book Service</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="services-hero">
-            <div class="hero-copy">
-                <span class="tagline">Our core capabilities</span>
-                <h1>Complete electrical support for every vehicle, from passenger cars to commercial fleets.</h1>
-                <p>JR Electradrive brings premium service delivery through expert technicians, fast diagnostics, and repairs you can trust.</p>
-                <a href="order.html" class="btn btn-primary">Book Service</a>
-            </div>
-        </section>
+<header>
+<nav class="navbar">
+    <div class="logo">
+        <img src="e57fb09b-db12-4a2b-b3ca-77a7db54df98.png">
+    </div>
 
-        <section class="services-grid">
-            <article class="service-card">
-                <div class="service-icon">⚡</div>
-                <h3>Diagnostics & troubleshooting</h3>
-                <p>Dealer-level fault finding for engine electronics, sensors, wiring, and charging systems.</p>
-                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
-            </article>
-            <article class="service-card">
-                <div class="service-icon">🔌</div>
-                <h3>Wiring harness repair</h3>
-                <p>Full harness restoration, corrosion control, and durable rewiring for complete system reliability.</p>
-                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
-            </article>
-            <article class="service-card">
-                <div class="service-icon">🔋</div>
-                <h3>Battery & charging systems</h3>
-                <p>Testing, replacement, and tuning for batteries, alternators, starters, and charging performance.</p>
-                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
-            </article>
-            <article class="service-card">
-                <div class="service-icon">🚛</div>
-                <h3>Truck & trailer electrical</h3>
-                <p>Fleet-ready maintenance, lighting repair, and heavy-duty electrical diagnostics for commercial vehicles.</p>
-                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
-            </article>
-            <article class="service-card">
-                <div class="service-icon">🛑</div>
-                <h3>EBS & ABS systems</h3>
-                <p>Precise troubleshooting and repair of electronic braking systems to keep your vehicle safe and compliant.</p>
-                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
-            </article>
-            <article class="service-card">
-                <div class="service-icon">⚙️</div>
-                <h3>Starter & alternator repair</h3>
-                <p>Comprehensive testing and service for starting and charging components across all makes and models.</p>
-                <div class="service-footer"><a href="order.html" class="btn-mini">Book Now</a></div>
-            </article>
-        </section>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" style="color:#E31E24;">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="order.html">Book</a></li>
+    </ul>
+</nav>
+</header>
 
-        <footer class="footer">
-            <div class="footer-grid">
-                <div>
-                    <h3>JR Electradrive Services</h3>
-                    <p>Premium auto electrical work, tailored to both private vehicles and commercial fleets with fast booking and expert diagnostics.</p>
-                </div>
-                <div>
-                    <h4>Quick links</h4>
-                    <div class="footer-nav">
-                        <a href="index.html">Home</a>
-                        <a href="about.html">About</a>
-                        <a href="contact.html">Contact</a>
-                        <a href="order.html">Book Service</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 JR Electradrive • Harare, Zimbabwe</p>
-                <p>Fast, premium electrical repairs you can trust.</p>
-            </div>
-        </footer>
+<!-- HERO -->
+<section class="hero">
+    <h1>Premium Auto Electrical Services</h1>
+    <p>Diagnostics, wiring, batteries and heavy-duty electrical work in Harare.</p>
+    <a href="order.html" class="btn">Book Service</a>
+</section>
 
-        <a class="floating-whatsapp" href="https://wa.me/263787747619" target="_blank">💬 WhatsApp</a>
-    </main>
+<!-- HEX IMAGES -->
+<section class="hex-section">
+    <div class="hex">
+        <img src="1000216905.jpg">
+    </div>
+    <div class="hex">
+        <img src="1000216902.jpg">
+    </div>
+    <div class="hex">
+        <img src="1000216899.jpg">
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+
+<div class="card">
+<h3>Diagnostics</h3>
+<p>Advanced fault finding with modern tools.</p>
+</div>
+
+<div class="card">
+<h3>Wiring Repair</h3>
+<p>Complete harness and electrical repairs.</p>
+</div>
+
+<div class="card">
+<h3>Battery Systems</h3>
+<p>Battery testing and charging fixes.</p>
+</div>
+
+<div class="card">
+<h3>Truck Electrical</h3>
+<p>Heavy-duty truck and fleet services.</p>
+</div>
+
+<div class="card">
+<h3>ABS / EBS</h3>
+<p>Brake system diagnostics and repair.</p>
+</div>
+
+<div class="card">
+<h3>Starter & Alternator</h3>
+<p>Reliable repair and replacement.</p>
+</div>
+
+</section>
+
+<footer class="footer">
+<p>© 2026 JR Electradrive | Harare</p>
+</footer>
+
+<a href="https://wa.me/263787747619" class="whatsapp">💬</a>
+
 </body>
 </html>
